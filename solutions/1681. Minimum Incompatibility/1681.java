@@ -4,8 +4,8 @@
 // Using bitmask and backtracking to calculate minimum incompatibility of every possible subsets
 // 
 // Complexity:
-// Time: O(N∗2^N)
-// Space: O(2^N)
+// Time: O(n∗2^n)
+// Space: O(2^n)
 
 class Solution {
     public int minimumIncompatibility(int[] nums, int k) {
