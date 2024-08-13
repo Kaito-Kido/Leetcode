@@ -7,6 +7,8 @@
 // Time: O(n∗2^n)
 // Space: O(2^n)
 
+import java.util.Arrays;
+
 class Solution {
     public int minimumIncompatibility(int[] nums, int k) {
         final int subsetSize = nums.length/k;
