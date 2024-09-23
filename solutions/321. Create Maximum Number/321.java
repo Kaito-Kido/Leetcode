@@ -1,7 +1,7 @@
 // https://leetcode.com/problems/create-maximum-number/
 // Complexity
 // Time: O(k * (m + n + k))
-// Space: O(k + m + n)
+// Space: O(k)
 
 class Solution {
     public int[] maxNumber(int[] nums1, int[] nums2, int k) {
