@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class Solution {
+class Solution {
     final int MOD = 1000000007;
 
     public int numMusicPlaylists(int n, int goal, int k) {
