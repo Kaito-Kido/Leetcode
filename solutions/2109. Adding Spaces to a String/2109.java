@@ -1,3 +1,6 @@
+// Time Complexity: O(n)
+// Space Complexity: O(m + n)
+
 class Solution {
     public String addSpaces(String s, int[] spaces) {
         int spaceIndex = 0;
