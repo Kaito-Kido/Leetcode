@@ -11,71 +11,71 @@ import java.util.LinkedList;
  */
 
 public class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
+  int val;
+  TreeNode left;
+  TreeNode right;
 
-    TreeNode(int x) {
-        val = x;
-    }
+  TreeNode(int x) {
+    val = x;
+  }
 }
 
 class Solution {
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        LinkedList<TreeNode> ancestorListP = new LinkedList<>();
-        LinkedList<TreeNode> ancestorListQ = new LinkedList<>();
+  public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+    LinkedList<TreeNode> ancestorListP = new LinkedList<>();
+    LinkedList<TreeNode> ancestorListQ = new LinkedList<>();
 
-        ancestorListP = findAncestorList(root, p, ancestorListP);
-        ancestorListQ = findAncestorList(root, q, ancestorListQ);
+    ancestorListP = findAncestorList(root, p, ancestorListP);
+    ancestorListQ = findAncestorList(root, q, ancestorListQ);
 
-        TreeNode commonA = null;
+    TreeNode commonA = null;
 
-        while (!ancestorListP.isEmpty() && !ancestorListQ.isEmpty()
-                && ancestorListP.getFirst().val == ancestorListQ.getFirst().val) {
-            commonA = ancestorListP.getFirst();
-            ancestorListP.removeFirst();
-            ancestorListQ.removeFirst();
-        }
-
-        return commonA;
+    while (!ancestorListP.isEmpty() && !ancestorListQ.isEmpty()
+        && ancestorListP.getFirst().val == ancestorListQ.getFirst().val) {
+      commonA = ancestorListP.getFirst();
+      ancestorListP.removeFirst();
+      ancestorListQ.removeFirst();
     }
 
-    private LinkedList<TreeNode> findAncestorList(TreeNode root, TreeNode value, LinkedList<TreeNode> ancestorList) {
-        ancestorList.add(root);
+    return commonA;
+  }
 
-        if (root.val == value.val) {
-            return ancestorList;
-        }
+  private LinkedList<TreeNode> findAncestorList(TreeNode root, TreeNode value, LinkedList<TreeNode> ancestorList) {
+    ancestorList.add(root);
 
-        if (root.left != null) {
-            LinkedList<TreeNode> leftList = findAncestorList(root.left, value, ancestorList);
-            if (leftList.contains(value))
-                return leftList;
-        }
-        if (root.right != null) {
-            LinkedList<TreeNode> rightList = findAncestorList(root.right, value, ancestorList);
-            if (rightList.contains(value))
-                return rightList;
-        }
-        ancestorList.removeLast();
-        return ancestorList;
+    if (root.val == value.val) {
+      return ancestorList;
     }
+
+    if (root.left != null) {
+      LinkedList<TreeNode> leftList = findAncestorList(root.left, value, ancestorList);
+      if (leftList.contains(value))
+        return leftList;
+    }
+    if (root.right != null) {
+      LinkedList<TreeNode> rightList = findAncestorList(root.right, value, ancestorList);
+      if (rightList.contains(value))
+        return rightList;
+    }
+    ancestorList.removeLast();
+    return ancestorList;
+  }
 }
 
 // Optimize Solution
 // class Solution {
-//     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-//         if (root == null || root == p || root == q) {
-//             return root;
-//         }
+// public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+// if (root == null || root == p || root == q) {
+// return root;
+// }
 
-//         TreeNode left = lowestCommonAncestor(root.left, p, q);
-//         TreeNode right = lowestCommonAncestor(root.right, p, q);
+// TreeNode left = lowestCommonAncestor(root.left, p, q);
+// TreeNode right = lowestCommonAncestor(root.right, p, q);
 
-//         if (left != null && right != null) {
-//             return root;
-//         }
+// if (left != null && right != null) {
+// return root;
+// }
 
-//         return left != null ? left : right;
-//     }
+// return left != null ? left : right;
+// }
 // }
